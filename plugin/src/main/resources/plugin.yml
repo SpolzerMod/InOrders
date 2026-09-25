@@ -1,0 +1,94 @@
+name: InOrders
+version: '${version}'
+main: me.spolzer.inorders.InOrdersPlugin
+api-version: '1.21.7'
+author: Spolzer
+description: Buy orders. Players pay upfront for items, other players deliver them and get paid.
+softdepend: [Vault, PlayerPoints, LuckPerms, floodgate, ViaVersion]
+# Downloaded by Paper on first start. Paper bundles its own MySQL driver, which takes precedence;
+# the entry is kept in case it is removed from Paper.
+libraries:
+  - com.zaxxer:HikariCP:7.1.0
+  - com.mysql:mysql-connector-j:9.7.0
+
+commands:
+  orders:
+    description: Open the order list.
+    usage: /orders [my|create|search|open|reload]
+    aliases: [order, inorders]
+
+permissions:
+  inorders.*:
+    description: All InOrders permissions.
+    default: op
+    children:
+      inorders.player: true
+      inorders.admin: true
+  inorders.player:
+    description: All player permissions.
+    default: true
+    children:
+      inorders.use: true
+      inorders.create: true
+      inorders.deliver: true
+      inorders.cancel: true
+      inorders.currency.*: true
+  inorders.use:
+    description: Open the order list and your own orders.
+    default: true
+  inorders.create:
+    description: Create orders.
+    default: true
+  inorders.deliver:
+    description: Deliver items to orders of other players.
+    default: true
+  inorders.cancel:
+    description: Cancel your own orders. The unspent money comes back.
+    default: true
+  inorders.limit.unlimited:
+    description: No limit on open orders. Other limits are inorders.limit.<number> or the LuckPerms meta inorders-limit.
+    default: false
+  inorders.bypass.*:
+    description: Neither fee nor tax.
+    default: false
+    children:
+      inorders.bypass.fee: true
+      inorders.bypass.tax: true
+  inorders.bypass.fee:
+    description: Create orders without the fee from orders.fee-percent.
+    default: false
+  inorders.bypass.tax:
+    description: Deliver items without the tax from orders.tax-percent.
+    default: false
+  inorders.currency.*:
+    description: Create orders in any currency.
+    default: true
+    children:
+      inorders.currency.money: true
+      inorders.currency.playerpoints: true
+  inorders.currency.money:
+    description: Create orders paid with Vault money.
+    default: true
+  inorders.currency.playerpoints:
+    description: Create orders paid with PlayerPoints.
+    default: true
+  inorders.admin:
+    description: All staff permissions.
+    default: op
+    children:
+      inorders.admin.cancel: true
+      inorders.admin.open: true
+      inorders.admin.reload: true
+      inorders.admin.worlds: true
+  inorders.admin.cancel:
+    description: Cancel orders of other players. The owner gets the unspent money back.
+    default: op
+  inorders.admin.open:
+    description: Open the order list for another player with /orders open.
+    default: op
+  inorders.admin.reload:
+    description: Reload the configuration and language files.
+    default: op
+  inorders.admin.worlds:
+    description: Use orders in worlds listed in disabled-worlds.
+    default: op

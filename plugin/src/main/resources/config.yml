@@ -1,0 +1,101 @@
+# InOrders configuration.
+# Messages and menu texts are in lang/<language>.yml.
+
+# "auto" shows every player the messages in their game language. English and Russian are included,
+# other languages can be added as new files in lang/. Any other value (for example "ru") uses one
+# language for everyone.
+language: auto
+# Used for the console and for game languages without a file in lang/.
+default-language: en
+
+permissions:
+  # true: all players can use orders by default.
+  # false: players need inorders.player (or individual permissions) from a permissions plugin such as LuckPerms.
+  # Staff permissions are always limited to operators by default.
+  open-to-everyone: true
+
+menus:
+  # How forms are shown: creating an order, choosing an amount, entering a price or a search.
+  # auto: game dialogs (Minecraft 1.21.6 and newer), chest menus for Bedrock players and older clients.
+  # dialog: dialogs wherever the client supports them.
+  # chest: chest menus and chat input for everyone.
+  # With dialogs the item catalog is a dialog too, with item icons for clients 1.21.11 and newer.
+  # Order lists are always chest menus.
+  forms: auto
+  # Creative tabs hidden from the item catalog. Tab ids: building_blocks, colored_blocks, natural_blocks,
+  # functional_blocks, redstone_blocks, tools_and_utilities, combat, food_and_drinks, ingredients, spawn_eggs.
+  hidden-tabs:
+    - spawn_eggs
+
+orders:
+  # Open orders per player without a limit permission. inorders.limit.<number> or the LuckPerms meta
+  # inorders-limit replace it, inorders.limit.unlimited removes the limit.
+  max-active: 7
+  # Largest number of items in one order. 2304 is a full inventory of 64-item stacks.
+  max-amount: 2304
+  # Durations in days a player can choose from.
+  durations: [1, 3, 7]
+  default-duration: 3
+  # Paid on top of the order price when it is created. Not returned when the order is cancelled.
+  fee-percent: 0
+  # Taken from the money a seller receives for delivered items.
+  tax-percent: 0
+
+currencies:
+  # Requires Vault and an economy plugin.
+  money:
+    enabled: true
+    # Price limits for one item. 0 as max-price means no limit.
+    min-price: 0.01
+    max-price: 0
+  # Requires PlayerPoints.
+  playerpoints:
+    enabled: true
+    min-price: 1
+    max-price: 0
+
+# Items that cannot be ordered.
+blocked-items: []
+#  - BEDROCK
+#  - BARRIER
+
+# Worlds where the order menus cannot be opened.
+disabled-worlds: []
+
+notifications:
+  # Tell online owners when items are delivered to their orders.
+  deliveries: true
+  # Remind players on join that they have items or refunds to collect.
+  join-reminder: true
+
+# Format: "<sound> [volume] [pitch]". Leave empty to turn a sound off.
+sounds:
+  click: "ui.button.click 0.4 1.2"
+  success: "entity.player.levelup 0.6 1.4"
+  sell: "entity.experience_orb.pickup 0.8 1.1"
+  claim: "entity.item.pickup 0.8 0.9"
+  notify: "block.note_block.chime 0.8 1.2"
+  error: "entity.villager.no 0.6 1"
+
+# Changes in this section require a server restart.
+storage:
+  # sqlite: local file plugins/InOrders/orders.db, no setup required.
+  # mysql: MySQL or MariaDB server, configured below.
+  type: sqlite
+  # Unique name of this server. Only needed when several servers use the same MySQL database.
+  server-id: main
+  # true: orders from every server sharing the database are visible everywhere.
+  # Only enable this when all these servers share one economy, otherwise money moves between economies.
+  shared-orders: false
+  mysql:
+    host: localhost
+    port: 3306
+    database: minecraft
+    user: root
+    password: ""
+    # Number of connections.
+    pool-size: 4
+    # Additional JDBC driver properties.
+    properties:
+      useSSL: false
+      allowPublicKeyRetrieval: true

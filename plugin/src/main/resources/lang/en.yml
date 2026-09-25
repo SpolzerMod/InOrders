@@ -1,0 +1,416 @@
+# InOrders, English. Formatting uses MiniMessage: https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<gradient:#d84315:#ef6c00><bold>InOrders</bold></gradient> <dark_gray>»</dark_gray> "
+
+currency:
+  money: "<gold>Money</gold>"
+  playerpoints: "<light_purple>Points</light_purple>"
+
+sort:
+  newest: "Newest first"
+  price: "Highest price per item"
+  amount: "Most items needed"
+  ending: "Ending soon"
+
+format:
+  # Shown instead of the order limit for inorders.limit.unlimited
+  unlimited: "∞"
+  money:
+    # <amount> is already formatted by the economy plugin through Vault
+    money:
+      one: "<gold><amount></gold>"
+      many: "<gold><amount></gold>"
+    playerpoints:
+      one: "<light_purple><amount> point</light_purple>"
+      many: "<light_purple><amount> points</light_purple>"
+  days:
+    one: "<count> day"
+    many: "<count> days"
+  time:
+    days: "<days>d <hours>h"
+    hours: "<hours>h <minutes>m"
+    minutes: "<minutes>m"
+    soon: "less than a minute"
+  amount:
+    plain: "<count>"
+    stacks: "<count> (<stacks> x <size>)"
+    stacks-rest: "<count> (<stacks> x <size> + <rest>)"
+  progress:
+    symbol: "■"
+    bar: "<green><filled></green><dark_gray><empty></dark_gray> <gray><percent>%</gray>"
+
+order:
+  title: "<gradient:#d84315:#ef6c00>Order #<id></gradient>"
+  status:
+    active: "<green>open</green>"
+    filled: "<aqua>filled</aqua>"
+    cancelled: "<red>cancelled</red>"
+    expired: "<gray>expired</gray>"
+  # First lines of the menu tooltip. Dialogs have the order number in the title
+  header:
+    - "<dark_gray>Order #<id>"
+    - ""
+  # Shown to sellers
+  market:
+    - "<gray>Buyer: <white><player>"
+    - "<gray>Pays per item: <payout>"
+    - "<gray>Still needed: <white><remaining>"
+    - "<progress>"
+    - "<gray>Closes in <white><time>"
+  have:
+    - ""
+    - "<green>You have: <white><count>"
+    - "<green>You would get: <money>"
+  # Shown to the owner
+  owner:
+    - "<gray>Status: <status>"
+    - "<gray>Price per item: <price>"
+    - "<gray>Received: <white><delivered> <gray>of <white><amount>"
+    - "<progress>"
+  owner-open:
+    - "<gray>Closes in <white><time>"
+  owner-items:
+    - "<green>Ready to collect: <white><uncollected>"
+  owner-refund:
+    - "<green>To be refunded: <refund>"
+  # Dialogs: short, without repeating the title
+  dialog:
+    owner:
+      - "<white><item>"
+      - "<gray>Received <white><delivered></white> of <white><amount></white>, <price> per item"
+    open:
+      - "<gray>Closes in <white><time>"
+    items:
+      - "<gray>Ready to collect: <white><uncollected>"
+    refund:
+      - "<gray>To be refunded: <refund>"
+    staff:
+      - "<white><item>"
+      - "<gray>Order of <white><player></white>, <price> per item"
+      - "<gray>Still needed: <white><remaining>"
+  claim:
+    name: "<green>Collect"
+    lore:
+      - "<gray>Bought items and refunded money."
+  cancel:
+    name: "<red>Cancel order"
+    lore:
+      - "<gray>Unspent money is returned,"
+      - "<gray>bought items stay in the order."
+  deliver:
+    name: "<green>Deliver items"
+    lore:
+      - "<gray>Choose how many to deliver."
+  remove:
+    name: "<red>Remove order"
+    lore:
+      - "<gray>The buyer gets the money back."
+  back: "<yellow>« Back"
+
+browse:
+  title: "<gradient:#d84315:#ef6c00>Orders</gradient>"
+  order:
+    actions:
+      - ""
+      - "<yellow>Left-click<gray> to deliver items"
+      - "<yellow>Shift + left-click<gray> to deliver everything"
+    own-actions:
+      - ""
+      - "<aqua>This is your order"
+      - "<yellow>Click<gray> to open"
+    staff-actions:
+      - "<red>Shift + right-click<gray> to remove"
+  empty:
+    name: "<gray>No orders yet"
+    lore:
+      - "<dark_gray>Create the first one with the book below."
+    filtered: "<gray>Nothing found"
+    filtered-lore:
+      - "<dark_gray>Clear the search or the currency filter."
+  previous: "<yellow>« Previous page <dark_gray>(now <page>)"
+  next: "<yellow>Next page » <dark_gray>(now <page>)"
+  sort: "<gold>Sort"
+  currency: "<gold>Currency"
+  currency-all: "<white>All currencies</white>"
+  option:
+    active: "<yellow>» <name>"
+    inactive: "<dark_gray>  <name>"
+    hint:
+      - ""
+      - "<yellow>Left-click<gray> next, <yellow>right-click<gray> previous"
+  search:
+    name: "<gold>Search"
+    lore:
+      - "<gray>Find other players' orders"
+      - "<gray>for the item you need."
+      - ""
+      - "<yellow>Click<gray> to search"
+    active: "<gold>Search: <white><query>"
+    active-lore:
+      - "<yellow>Left-click<gray> to change"
+      - "<yellow>Right-click<gray> to clear"
+    input:
+      title: "<gradient:#d84315:#ef6c00>Search orders</gradient>"
+      label: "Item name"
+      hint:
+        - "<gray>Search by the item name or id,"
+        - "<gray>for example diamond, oak log or mending."
+  create:
+    name: "<green>Create an order"
+    lore:
+      - "<gray>Choose an item, an amount and a price."
+      - "<gray>You pay right away, the money waits in the order"
+      - "<gray>while other players deliver the items."
+  mine:
+    name: "<aqua>My orders"
+    lore:
+      - "<gray>Open: <white><open> <dark_gray>of <limit>"
+    ready:
+      - "<green>Ready to collect: <count>"
+  help:
+    name: "<yellow>How it works"
+    lore:
+      - "<gray>An order is a request to buy items."
+      - "<gray>The buyer pays upfront, other players"
+      - "<gray>deliver the items and get paid at once."
+      - ""
+      - "<gray>Highlighted orders are the ones you"
+      - "<gray>already have matching items for."
+      - "<gray>Buyers collect their items in My orders."
+
+mine:
+  title: "<gradient:#d84315:#ef6c00>My orders</gradient>"
+  actions:
+    details:
+      - "<yellow>Right-click<gray> for details"
+    claim:
+      - "<yellow>Left-click<gray> to collect"
+    cancel:
+      - "<red>Shift + right-click<gray> to cancel"
+  back: "<yellow>« Back to orders"
+  claim-all:
+    name: "<green>Collect everything"
+    lore:
+      - "<gray>Collect bought items and refunds"
+      - "<gray>from all orders at once."
+    nothing:
+      - "<dark_gray>Nothing to collect yet."
+  empty:
+    name: "<gray>You have no orders"
+    lore:
+      - "<dark_gray>Create one with the book below."
+
+picker:
+  title: "<gradient:#d84315:#ef6c00>What to order?</gradient>"
+  tab:
+    lore:
+      - "<dark_gray>Items: <count>"
+      - "<yellow>Click<gray> to open"
+    selected:
+      - "<dark_gray>Items: <count>"
+  item:
+    - ""
+    - "<yellow>Click<gray> to order"
+  nothing: "<gray>Nothing found: <white><query>"
+  nothing-lore:
+    - "<dark_gray>Try another name, for example diamond or oak log."
+  previous: "<yellow>« Back <dark_gray>(<page> of <pages>)"
+  next: "<yellow>Next » <dark_gray>(<page> of <pages>)"
+  search:
+    name: "<gold>Search"
+    lore:
+      - "<gray>Find an item by its name"
+      - "<gray>or id: diamond, oak log, mending."
+      - ""
+      - "<yellow>Click<gray> to search"
+    active: "<gold>Search: <white><query>"
+    active-lore:
+      - "<gray>Found: <white><count>"
+      - ""
+      - "<yellow>Left-click<gray> to change"
+      - "<yellow>Right-click<gray> to go back to the tabs"
+    input:
+      title: "<gradient:#d84315:#ef6c00>Find an item</gradient>"
+      label: "Name or id"
+      hint:
+        - "<gray>For example diamond, oak log or mending."
+  hint:
+    name: "<green>Item from your inventory"
+    lore:
+      - "<gray>Click an item in your inventory to order"
+      - "<gray>the same one, with the same enchantments"
+      - "<gray>and properties."
+  back: "<yellow>« Back to orders"
+
+catalog:
+  find-title: "<gradient:#d84315:#ef6c00>Find orders</gradient>"
+  inventory-find:
+    - "<gray>Find orders for what you have"
+  section: "<gray><section></gray><dark_gray>, page <page> of <pages>"
+  found: "<gray>Found for \"<white><query></white>\": <white><count></white><dark_gray>, page <page> of <pages>"
+  nothing: "<gray>Nothing found for \"<white><query></white>\""
+  search-label: "Search by name"
+  search: "Search"
+  sections: "Sections"
+  sections-title: "<gradient:#d84315:#ef6c00>Sections</gradient>"
+  previous: "« Back"
+  next: "Next »"
+  no-previous: "<dark_gray>« Back"
+  no-next: "<dark_gray>Next »"
+  inventory: "From your inventory"
+  inventory-hint:
+    - "<gray>Order the same item you have"
+  inventory-empty:
+    - "<gray>Your inventory is empty"
+
+create:
+  title: "<gradient:#d84315:#ef6c00>New order</gradient>"
+  dialog:
+    text:
+      - "<white><item>"
+      - "<gray>Balance: <balances>"
+    balance-entry: "<balance>"
+    amount: "Amount (stacks work too: 3st)"
+    price: "Price per item"
+    currency: "Currency"
+    duration: "Duration"
+    next: "<green>Next"
+    back: "Back"
+    confirm-title: "<gradient:#d84315:#ef6c00>Check your order</gradient>"
+    summary:
+      - "<white><item>, <amount>"
+      - "<gray><price> per item, for <days>"
+      - "<gray>You pay now: <cost>"
+    summary-fee:
+      - "<gray>This includes a fee of <fee>, which is not refunded."
+    create: "<green>Create order"
+    create-tooltip: "You pay <cost>"
+    edit: "Edit"
+  input:
+    amount:
+      title: "<gradient:#d84315:#ef6c00>Amount</gradient>"
+      label: "How many items you need"
+      hint:
+        - "<gray>A number or stacks: 640, 10st, 2.5k."
+    price:
+      title: "<gradient:#d84315:#ef6c00>Price</gradient>"
+      label: "Price per item"
+      hint:
+        - "<gray>For example 12, 0.5 or 1.5k."
+  menu:
+    item:
+      - "<gray>You are ordering: <white><amount>"
+      - "<dark_gray>Only identical items can be delivered."
+    minus: "<red>-<step>"
+    plus: "<green>+<step>"
+    amount: "<white>Amount: <amount>"
+    amount-lore:
+      - "<gray>Change it with the buttons on the sides"
+      - "<gray>or type a number. Maximum: <max>."
+      - ""
+      - "<yellow>Click<gray> to type a number"
+    price: "<white>Price per item: <price>"
+    price-empty: "<yellow>Set the price per item"
+    price-lore:
+      - "<yellow>Click<gray> to enter the price"
+    currency: "<white>Currency: <name>"
+    duration: "<white>Duration: <days>"
+    days: "<days>"
+    switch:
+      - ""
+      - "<yellow>Left-click<gray> next, <yellow>right-click<gray> previous"
+    change: "<yellow>« Other item"
+    cancel: "<red>Cancel"
+    not-ready: "<gray>The order cannot be created yet"
+    confirm: "<green><bold>Create order"
+    confirm-lore:
+      - "<gray>You pay now: <cost>"
+  done: "Order #<id> created: <white><amount></white> <item>, paid <cost>."
+  no-currency: "<red>No currency is available for orders."
+  blocked: "<red>This item cannot be ordered."
+  bad-amount: "<red>The amount must be between 1 and <max>."
+  bad-number: "<red>Could not read \"<input>\"."
+  no-price: "<red>Set the price per item."
+  price-low: "<red>The price per item must be at least <price>."
+  price-high: "<red>The price per item must be at most <price>."
+  no-money: "<red>Not enough money: <cost> is needed."
+  limit: "<red>You have reached the limit of open orders: <limit>."
+
+deliver:
+  title: "<gradient:#d84315:#ef6c00>Deliver items</gradient>"
+  dialog:
+    - "<white><item>"
+    - "<white><player></white><gray> pays <payout> per item"
+    - "<gray>Still needed: <white><remaining></white>, closes in <white><time>"
+  amount: "<white>Deliver <count>"
+  all: "<green>Deliver all: <count>"
+  button-lore:
+    - "<gray>You get: <money>"
+  slider: "Deliver"
+  chosen: "<green>Deliver"
+  chosen-tooltip: "Delivering everything pays <money>"
+  none: "<red>Nothing to deliver"
+  none-lore:
+    - ""
+    - "<gray>You have no such items. Damaged"
+    - "<gray>and renamed ones do not count."
+  back: "<yellow>« Back"
+  done: "You delivered <white><count></white> <item> to <white><player></white> and got <money>."
+  own: "<red>You cannot deliver to your own order."
+  closed: "<red>The order is already closed or filled."
+  nothing: "<red>You have no matching items: <item>."
+  payment-failed: "<red>The payment could not be made, your items were returned."
+  payment-lost: "<red>The payment could not be made and the buyer has already collected the items. Please contact staff."
+
+cancel:
+  confirm:
+    title: "<gradient:#d84315:#ef6c00>Cancel order #<id>?</gradient>"
+    own:
+      - "<white><item>"
+      - "<gray>You get back <refund>, bought items stay in the order."
+    staff:
+      - "<white><item>"
+      - "<gray>Order of <white><player></white>, who gets back <refund>."
+    accept: "<red>Cancel it"
+    keep: "Keep"
+  done: "Order #<id> cancelled."
+  closed: "<red>The order is already closed."
+  by-staff: "<yellow>Staff cancelled your order #<id> (<item>)."
+
+claim:
+  items: "Collected items: <white><count></white>."
+  refund: "Refunded: <money>."
+  full: "<yellow>Not everything fit in your inventory, the rest waits in the order."
+  failed: "<red>Part of the refund could not be paid, try again later."
+  nothing: "<gray>Nothing to collect yet."
+
+notify:
+  delivered: "<white><player></white> delivered <white><count></white> <item> to your order #<id>."
+  filled: "Order #<id> is filled. Collect it with <click:run_command:'/orders my'><yellow>/orders my</yellow></click>"
+  join: "You have something to collect from orders: <white><count></white>. <click:run_command:'/orders my'><yellow>[Open]</yellow></click>"
+
+input:
+  confirm: "<green>Done"
+  cancel: "Cancel"
+  chat: "Type in chat: <label>. Type \"cancel\" to stop."
+  cancel-words:
+    - "cancel"
+  timeout: "<gray>Input timed out."
+
+dialog:
+  close: "Close"
+  back: "Back"
+
+error:
+  database: "<red>The database is not available, try again later."
+  unexpected: "<red>Something went wrong. Please let the server staff know."
+  no-permission: "<red>You do not have permission."
+  disabled-world: "<red>Orders are not available in this world."
+  players-only: "<red>Only players can use this command."
+
+command:
+  reloaded: "Configuration and language files reloaded."
+  reload-failed: "<red>Could not reload the configuration, see the console."
+  usage: '<gray>/<label></gray> orders, <gray>/<label> my</gray> your orders, <gray>/<label> create [hand]</gray> new order, <gray>/<label> search \<text></gray> search.'
+  empty-hand: "<red>Hold an item in your hand."
+  no-player: "<red>Player <player> is not online."

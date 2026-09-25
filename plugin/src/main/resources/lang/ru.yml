@@ -1,0 +1,420 @@
+# InOrders, русский язык. Разметка MiniMessage: https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<gradient:#d84315:#ef6c00><bold>InOrders</bold></gradient> <dark_gray>»</dark_gray> "
+
+currency:
+  money: "<gold>Монеты</gold>"
+  playerpoints: "<light_purple>Поинты</light_purple>"
+
+sort:
+  newest: "Сначала новые"
+  price: "Дороже за штуку"
+  amount: "Больше всего нужно"
+  ending: "Скоро закроются"
+
+format:
+  # Вместо предела заказов при inorders.limit.unlimited
+  unlimited: "∞"
+  money:
+    # <amount> уже оформлена экономикой через Vault
+    money:
+      one: "<gold><amount></gold>"
+      few: "<gold><amount></gold>"
+      many: "<gold><amount></gold>"
+    playerpoints:
+      one: "<light_purple><amount> поинт</light_purple>"
+      few: "<light_purple><amount> поинта</light_purple>"
+      many: "<light_purple><amount> поинтов</light_purple>"
+  days:
+    one: "<count> день"
+    few: "<count> дня"
+    many: "<count> дней"
+  time:
+    days: "<days> д. <hours> ч."
+    hours: "<hours> ч. <minutes> мин."
+    minutes: "<minutes> мин."
+    soon: "меньше минуты"
+  amount:
+    plain: "<count> шт."
+    stacks: "<count> шт. (<stacks> x <size>)"
+    stacks-rest: "<count> шт. (<stacks> x <size> + <rest>)"
+  progress:
+    symbol: "■"
+    bar: "<green><filled></green><dark_gray><empty></dark_gray> <gray><percent>%</gray>"
+
+order:
+  title: "<gradient:#d84315:#ef6c00>Заказ #<id></gradient>"
+  status:
+    active: "<green>открыт</green>"
+    filled: "<aqua>выполнен</aqua>"
+    cancelled: "<red>отменён</red>"
+    expired: "<gray>срок истёк</gray>"
+  # Первые строки подсказки в меню. В окнах номер заказа уже есть в заголовке
+  header:
+    - "<dark_gray>Заказ #<id>"
+    - ""
+  # Для продавцов
+  market:
+    - "<gray>Заказчик: <white><player>"
+    - "<gray>Платит за 1 шт.: <payout>"
+    - "<gray>Нужно ещё: <white><remaining>"
+    - "<progress>"
+    - "<gray>Закроется через <white><time>"
+  have:
+    - ""
+    - "<green>У вас есть: <white><count> шт."
+    - "<green>Вы получите: <money>"
+  # Для заказчика
+  owner:
+    - "<gray>Статус: <status>"
+    - "<gray>Цена за 1 шт.: <price>"
+    - "<gray>Собрано: <white><delivered> <gray>из <white><amount>"
+    - "<progress>"
+  owner-open:
+    - "<gray>Закроется через <white><time>"
+  owner-items:
+    - "<green>Можно забрать: <white><uncollected>"
+  owner-refund:
+    - "<green>Вернётся: <refund>"
+  # Окна (диалоги): коротко, без повторов заголовка
+  dialog:
+    owner:
+      - "<white><item>"
+      - "<gray>Собрано <white><delivered></white> из <white><amount></white>, <price> за штуку"
+    open:
+      - "<gray>Закроется через <white><time>"
+    items:
+      - "<gray>Можно забрать: <white><uncollected>"
+    refund:
+      - "<gray>Вернётся <refund>"
+    staff:
+      - "<white><item>"
+      - "<gray>Заказ игрока <white><player></white>, <price> за штуку"
+      - "<gray>Нужно ещё <white><remaining>"
+  claim:
+    name: "<green>Забрать"
+    lore:
+      - "<gray>Купленные предметы и возврат денег."
+  cancel:
+    name: "<red>Отменить заказ"
+    lore:
+      - "<gray>Неизрасходованные деньги вернутся,"
+      - "<gray>купленные предметы останутся в заказе."
+  deliver:
+    name: "<green>Сдать предметы"
+    lore:
+      - "<gray>Выбрать, сколько сдать."
+  remove:
+    name: "<red>Снять заказ"
+    lore:
+      - "<gray>Заказчик получит деньги обратно."
+  back: "<yellow>« Назад"
+
+browse:
+  title: "<gradient:#d84315:#ef6c00>Заказы</gradient>"
+  order:
+    actions:
+      - ""
+      - "<yellow>ЛКМ<gray> - сдать предметы"
+      - "<yellow>Shift + ЛКМ<gray> - сдать всё сразу"
+    own-actions:
+      - ""
+      - "<aqua>Это ваш заказ"
+      - "<yellow>Клик<gray> - открыть"
+    staff-actions:
+      - "<red>Shift + ПКМ<gray> - снять заказ"
+  empty:
+    name: "<gray>Заказов пока нет"
+    lore:
+      - "<dark_gray>Создайте первый: книга внизу."
+    filtered: "<gray>Ничего не найдено"
+    filtered-lore:
+      - "<dark_gray>Сбросьте поиск или фильтр валюты."
+  previous: "<yellow>« Предыдущая страница <dark_gray>(сейчас <page>)"
+  next: "<yellow>Следующая страница » <dark_gray>(сейчас <page>)"
+  sort: "<gold>Сортировка"
+  currency: "<gold>Валюта"
+  currency-all: "<white>Все валюты</white>"
+  option:
+    active: "<yellow>» <name>"
+    inactive: "<dark_gray>  <name>"
+    hint:
+      - ""
+      - "<yellow>ЛКМ<gray> - дальше, <yellow>ПКМ<gray> - назад"
+  search:
+    name: "<gold>Поиск"
+    lore:
+      - "<gray>Найти заказы других игроков"
+      - "<gray>на нужный предмет."
+      - ""
+      - "<yellow>Клик<gray> - открыть поиск"
+    active: "<gold>Поиск: <white><query>"
+    active-lore:
+      - "<yellow>ЛКМ<gray> - изменить"
+      - "<yellow>ПКМ<gray> - сбросить"
+    input:
+      title: "<gradient:#d84315:#ef6c00>Поиск заказов</gradient>"
+      label: "Название предмета"
+      hint:
+        - "<gray>Название на русском или английском,"
+        - "<gray>например алмаз, diamond или починка."
+  create:
+    name: "<green>Создать заказ"
+    lore:
+      - "<gray>Выберите предмет, количество и цену."
+      - "<gray>Деньги списываются сразу и ждут в заказе,"
+      - "<gray>пока другие игроки сдают предметы."
+  mine:
+    name: "<aqua>Мои заказы"
+    lore:
+      - "<gray>Открыто: <white><open> <dark_gray>из <limit>"
+    ready:
+      - "<green>Готово к получению: <count>"
+  help:
+    name: "<yellow>Как это работает"
+    lore:
+      - "<gray>Заказ - это просьба купить предметы."
+      - "<gray>Заказчик платит сразу, а другие игроки"
+      - "<gray>сдают предметы и тут же получают деньги."
+      - ""
+      - "<gray>Подсвечены заказы, для которых у вас"
+      - "<gray>уже есть подходящие предметы."
+      - "<gray>Купленное заказчик забирает в «Моих заказах»."
+
+mine:
+  title: "<gradient:#d84315:#ef6c00>Мои заказы</gradient>"
+  actions:
+    details:
+      - "<yellow>ПКМ<gray> - подробнее"
+    claim:
+      - "<yellow>ЛКМ<gray> - забрать"
+    cancel:
+      - "<red>Shift + ПКМ<gray> - отменить заказ"
+  back: "<yellow>« К списку заказов"
+  claim-all:
+    name: "<green>Забрать всё"
+    lore:
+      - "<gray>Забрать купленные предметы и возвраты"
+      - "<gray>из всех заказов сразу."
+    nothing:
+      - "<dark_gray>Пока нечего забирать."
+  empty:
+    name: "<gray>У вас нет заказов"
+    lore:
+      - "<dark_gray>Создайте заказ: книга внизу."
+
+picker:
+  title: "<gradient:#d84315:#ef6c00>Что заказать?</gradient>"
+  tab:
+    lore:
+      - "<dark_gray>Предметов: <count>"
+      - "<yellow>Клик<gray> - открыть"
+    selected:
+      - "<dark_gray>Предметов: <count>"
+  item:
+    - ""
+    - "<yellow>Клик<gray> - заказать"
+  nothing: "<gray>Ничего не найдено: <white><query>"
+  nothing-lore:
+    - "<dark_gray>Попробуйте другое название, например алмаз или diamond."
+  previous: "<yellow>« Назад <dark_gray>(<page> из <pages>)"
+  next: "<yellow>Дальше » <dark_gray>(<page> из <pages>)"
+  search:
+    name: "<gold>Поиск"
+    lore:
+      - "<gray>Найти предмет по названию"
+      - "<gray>на русском или английском."
+      - ""
+      - "<yellow>Клик<gray> - ввести запрос"
+    active: "<gold>Поиск: <white><query>"
+    active-lore:
+      - "<gray>Найдено: <white><count>"
+      - ""
+      - "<yellow>ЛКМ<gray> - изменить"
+      - "<yellow>ПКМ<gray> - вернуться к вкладкам"
+    input:
+      title: "<gradient:#d84315:#ef6c00>Поиск предмета</gradient>"
+      label: "Название или id"
+      hint:
+        - "<gray>Например diamond, oak log или mending."
+  hint:
+    name: "<green>Предмет из инвентаря"
+    lore:
+      - "<gray>Нажмите на предмет в своём инвентаре,"
+      - "<gray>чтобы заказать такой же: с теми же"
+      - "<gray>чарами и свойствами."
+  back: "<yellow>« К списку заказов"
+
+catalog:
+  find-title: "<gradient:#d84315:#ef6c00>Поиск заказов</gradient>"
+  inventory-find:
+    - "<gray>Найти заказы на то, что у вас есть"
+  section: "<gray><section></gray><dark_gray>, стр. <page> из <pages>"
+  found: "<gray>Найдено по «<white><query></white>»: <white><count></white><dark_gray>, стр. <page> из <pages>"
+  nothing: "<gray>По «<white><query></white>» ничего не нашлось"
+  search-label: "Поиск по названию"
+  search: "Найти"
+  sections: "Разделы"
+  sections-title: "<gradient:#d84315:#ef6c00>Разделы</gradient>"
+  previous: "« Назад"
+  next: "Дальше »"
+  no-previous: "<dark_gray>« Назад"
+  no-next: "<dark_gray>Дальше »"
+  inventory: "Из инвентаря"
+  inventory-hint:
+    - "<gray>Заказать такой же предмет, как у вас"
+  inventory-empty:
+    - "<gray>Инвентарь пуст"
+
+create:
+  title: "<gradient:#d84315:#ef6c00>Новый заказ</gradient>"
+  dialog:
+    text:
+      - "<white><item>"
+      - "<gray>На счету: <balances>"
+    balance-entry: "<balance>"
+    amount: "Количество (можно в стаках: 3ст)"
+    price: "Цена за штуку"
+    currency: "Валюта"
+    duration: "Срок"
+    next: "<green>Далее"
+    back: "Назад"
+    confirm-title: "<gradient:#d84315:#ef6c00>Проверьте заказ</gradient>"
+    summary:
+      - "<white><item>, <amount>"
+      - "<gray>По <price> за штуку, срок <days>"
+      - "<gray>Спишется сейчас: <cost>"
+    summary-fee:
+      - "<gray>Из них комиссия <fee>, она не возвращается."
+    create: "<green>Создать заказ"
+    create-tooltip: "Спишется <cost>"
+    edit: "Изменить"
+  input:
+    amount:
+      title: "<gradient:#d84315:#ef6c00>Количество</gradient>"
+      label: "Сколько предметов нужно"
+      hint:
+        - "<gray>Число или стаки: 640, 10ст, 2.5к."
+    price:
+      title: "<gradient:#d84315:#ef6c00>Цена</gradient>"
+      label: "Цена за 1 шт."
+      hint:
+        - "<gray>Например 12, 0.5 или 1.5к."
+  menu:
+    item:
+      - "<gray>Вы заказываете: <white><amount>"
+      - "<dark_gray>Сдать смогут только точно такие же предметы."
+    minus: "<red>-<step>"
+    plus: "<green>+<step>"
+    amount: "<white>Количество: <amount>"
+    amount-lore:
+      - "<gray>Меняйте кнопками по бокам"
+      - "<gray>или введите число. Максимум: <max>."
+      - ""
+      - "<yellow>Клик<gray> - ввести число"
+    price: "<white>Цена за 1 шт.: <price>"
+    price-empty: "<yellow>Укажите цену за 1 шт."
+    price-lore:
+      - "<yellow>Клик<gray> - ввести цену"
+    currency: "<white>Валюта: <name>"
+    duration: "<white>Срок: <days>"
+    days: "<days>"
+    switch:
+      - ""
+      - "<yellow>ЛКМ<gray> - дальше, <yellow>ПКМ<gray> - назад"
+    change: "<yellow>« Другой предмет"
+    cancel: "<red>Отмена"
+    not-ready: "<gray>Заказ пока нельзя создать"
+    confirm: "<green><bold>Создать заказ"
+    confirm-lore:
+      - "<gray>Спишется сейчас: <cost>"
+  done: "Заказ #<id> создан: <white><amount></white> <item>, списано <cost>."
+  no-currency: "<red>Нет доступной валюты для заказов."
+  blocked: "<red>Этот предмет нельзя заказать."
+  bad-amount: "<red>Количество должно быть от 1 до <max>."
+  bad-number: "<red>Не удалось разобрать «<input>»."
+  no-price: "<red>Укажите цену за 1 шт."
+  price-low: "<red>Цена за 1 шт. должна быть не меньше <price>."
+  price-high: "<red>Цена за 1 шт. должна быть не больше <price>."
+  no-money: "<red>Не хватает денег: нужно <cost>."
+  limit: "<red>Достигнут предел открытых заказов: <limit>."
+
+deliver:
+  title: "<gradient:#d84315:#ef6c00>Сдать предметы</gradient>"
+  dialog:
+    - "<white><item>"
+    - "<white><player></white><gray> платит <payout> за штуку"
+    - "<gray>Нужно ещё <white><remaining></white>, закроется через <white><time>"
+  amount: "<white>Сдать <count> шт."
+  all: "<green>Сдать всё: <count> шт."
+  button-lore:
+    - "<gray>Вы получите: <money>"
+  slider: "Сдать"
+  chosen: "<green>Сдать"
+  chosen-tooltip: "Если сдать всё, вы получите <money>"
+  none: "<red>Нечего сдать"
+  none-lore:
+    - ""
+    - "<gray>У вас нет таких предметов. Повреждённые"
+    - "<gray>и переименованные не подходят."
+  back: "<yellow>« Назад"
+  done: "Вы сдали <white><count></white> шт. (<item>) игроку <white><player></white> и получили <money>."
+  own: "<red>Нельзя сдавать предметы в свой заказ."
+  closed: "<red>Заказ уже закрыт или выполнен."
+  nothing: "<red>У вас нет подходящих предметов: <item>."
+  payment-failed: "<red>Не удалось зачислить оплату, предметы возвращены."
+  payment-lost: "<red>Не удалось зачислить оплату, а заказчик уже забрал предметы. Обратитесь к администрации."
+
+cancel:
+  confirm:
+    title: "<gradient:#d84315:#ef6c00>Отменить заказ #<id>?</gradient>"
+    own:
+      - "<white><item>"
+      - "<gray>Вернётся <refund>, купленное останется в заказе."
+    staff:
+      - "<white><item>"
+      - "<gray>Заказ игрока <white><player></white>, он получит обратно <refund>."
+    accept: "<red>Отменить"
+    keep: "Оставить"
+  done: "Заказ #<id> отменён."
+  closed: "<red>Заказ уже закрыт."
+  by-staff: "<yellow>Администрация отменила ваш заказ #<id> (<item>)."
+
+claim:
+  items: "Забрано предметов: <white><count></white>."
+  refund: "Возвращено: <money>."
+  full: "<yellow>Не всё поместилось в инвентарь, остальное ждёт в заказе."
+  failed: "<red>Часть возврата не удалось зачислить, попробуйте позже."
+  nothing: "<gray>Пока нечего забирать."
+
+notify:
+  delivered: "В заказ #<id> сдано <white><count></white> шт. (<item>), продавец <white><player></white>."
+  filled: "Заказ #<id> выполнен. Заберите покупку: <click:run_command:'/orders my'><yellow>/orders my</yellow></click>"
+  join: "Есть что забрать из заказов: <white><count></white>. <click:run_command:'/orders my'><yellow>[Открыть]</yellow></click>"
+
+input:
+  confirm: "<green>Готово"
+  cancel: "Отмена"
+  chat: "Введите в чат: <label>. Чтобы отменить, напишите «отмена»."
+  cancel-words:
+    - "отмена"
+    - "cancel"
+  timeout: "<gray>Время ввода вышло."
+
+dialog:
+  close: "Закрыть"
+  back: "Назад"
+
+error:
+  database: "<red>Не удалось обратиться к базе данных, попробуйте позже."
+  unexpected: "<red>Что-то пошло не так. Пожалуйста, сообщите администрации."
+  no-permission: "<red>Недостаточно прав."
+  disabled-world: "<red>В этом мире заказы недоступны."
+  players-only: "<red>Команда доступна только игрокам."
+
+command:
+  reloaded: "Настройки и тексты перезагружены."
+  reload-failed: "<red>Не удалось перечитать настройки, подробности в консоли."
+  usage: '<gray>/<label></gray> - заказы, <gray>/<label> my</gray> - мои заказы, <gray>/<label> create [hand]</gray> - новый заказ, <gray>/<label> search \<текст></gray> - поиск.'
+  empty-hand: "<red>Возьмите предмет в руку."
+  no-player: "<red>Игрок <player> не в сети."
